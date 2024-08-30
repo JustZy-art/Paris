@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Image</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        .image-container {
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+        .image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        /* Mobile version */
+        @media (max-width: 767px) {
+            .image-container img.mobile {
+                display: block;
+            }
+            .image-container img.desktop {
+                display: none;
+            }
+        }
+
+        /* Desktop version */
+        @media (min-width: 768px) {
+            .image-container img.desktop {
+                display: block;
+            }
+            .image-container img.mobile {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="desktop-image.jpg" alt="Desktop Image" class="desktop">
+        <img src="mobile-image.jpg" alt="Mobile Image" class="mobile">
+    </div>
+</body>
+</html>
