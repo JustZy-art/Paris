@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scrollable Image</title>
+    <title>Responsive Scrollable Image</title>
     <style>
         html, body {
             margin: 0;
@@ -17,21 +17,26 @@
             width: 100vw;  /* Full viewport width */
             overflow: auto; /* Allow scrolling */
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .image-container img {
             display: block;
-            max-width: none; /* Remove default constraints */
-            max-height: none;
             position: absolute;
+            max-width: 100%; /* Ensure the image width does not exceed viewport width */
+            height: auto;
+            max-height: none; /* Allow the height to be larger than viewport height */
         }
 
         /* Mobile version */
         @media (max-width: 767px) {
             .image-container img.mobile {
-                width: 200%; /* Make the image larger than viewport */
-                height: auto;
-                left: -50%; /* Center the image initially */
+                width: 100vw; /* Fit the width of the viewport */
+                height: auto; /* Allow height to be adjusted by aspect ratio */
+                object-fit: contain; /* Ensure image is contained within the viewport */
                 top: 0;
+                left: 0;
             }
             .image-container img.desktop {
                 display: none;
@@ -41,10 +46,11 @@
         /* Desktop version */
         @media (min-width: 768px) {
             .image-container img.desktop {
-                width: 200%; /* Make the image larger than viewport */
-                height: auto;
-                left: -50%; /* Center the image initially */
+                width: 100vw; /* Fit the width of the viewport */
+                height: auto; /* Adjust height according to aspect ratio */
+                max-height: none; /* Allow height to exceed viewport height if needed */
                 top: 0;
+                left: 0;
             }
             .image-container img.mobile {
                 display: none;
