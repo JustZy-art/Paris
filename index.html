@@ -3,33 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Image</title>
+    <title>Scrollable Image</title>
     <style>
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
             width: 100%;
-            overflow: hidden;
+            overflow: hidden; /* Hide body overflow to prevent scrollbars */
         }
         .image-container {
-            height: 100%;
-            width: 100%;
+            height: 100vh; /* Full viewport height */
+            width: 100vw;  /* Full viewport width */
+            overflow: auto; /* Allow scrolling */
             position: relative;
         }
         .image-container img {
+            display: block;
+            max-width: none; /* Remove default constraints */
+            max-height: none;
             position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
         }
 
         /* Mobile version */
         @media (max-width: 767px) {
             .image-container img.mobile {
-                display: block;
+                width: 200%; /* Make the image larger than viewport */
+                height: auto;
+                left: -50%; /* Center the image initially */
+                top: 0;
             }
             .image-container img.desktop {
                 display: none;
@@ -39,7 +41,10 @@
         /* Desktop version */
         @media (min-width: 768px) {
             .image-container img.desktop {
-                display: block;
+                width: 200%; /* Make the image larger than viewport */
+                height: auto;
+                left: -50%; /* Center the image initially */
+                top: 0;
             }
             .image-container img.mobile {
                 display: none;
